@@ -14,9 +14,9 @@ export default function Loader({ onDone, ready = true }) {
 
   useEffect(() => {
     if (phase === 'hold' && ready) {
-      // Minimum display time of 1.5s even if images load instantly
-      const t2 = setTimeout(() => setPhase('exit'), 1500);
-      const t3 = setTimeout(() => onDoneRef.current(), 2200);
+      // Run two full cycles of the progress line (1.2s * 2 = 2400ms)
+      const t2 = setTimeout(() => setPhase('exit'), 2400);
+      const t3 = setTimeout(() => onDoneRef.current(), 3100);
       return () => [t2, t3].forEach(clearTimeout);
     }
   }, [phase, ready]);
@@ -66,11 +66,7 @@ export default function Loader({ onDone, ready = true }) {
       {/* ── Animated line ── */}
       <div className="mt-8 w-64 h-px bg-white/20 overflow-hidden">
         <div
-          className="h-full bg-white"
-          style={{
-            transform: phase === 'enter' ? 'translateX(-100%)' : 'translateX(100%)',
-            transition: phase !== 'enter' ? 'transform 1.6s cubic-bezier(0.76,0,0.24,1) 0.2s' : 'none',
-          }}
+          className={`h-full bg-white ${phase === 'enter' ? '-translate-x-full' : phase === 'hold' ? 'animate-loader-line' : 'translate-x-full'}`}
         />
       </div>
 

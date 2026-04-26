@@ -21,7 +21,7 @@ export default function CartDrawer({ open, onClose, cart, removeFromCart, update
 
       {/* Drawer */}
       <aside
-        className={`fixed top-0 right-0 h-full w-full max-w-[420px] bg-duch-bg z-[999] flex flex-col shadow-2xl ${open ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 right-0 h-full w-full md:w-[420px] bg-duch-bg z-[999] flex flex-col shadow-2xl ${open ? 'translate-x-0' : 'translate-x-full'}`}
         style={{ transition: 'transform 0.35s cubic-bezier(0.4,0,0.2,1)' }}
       >
         {/* Header */}

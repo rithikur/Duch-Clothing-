@@ -77,11 +77,6 @@ export default function Header({ cartCount = 0, onCartOpen, user, onLogin, onLog
         <div className="flex items-center gap-5 justify-end w-1/3">
           {user ? (
             <div className="hidden md:flex items-center gap-4">
-              {user.role === 'admin' && (
-                <Link to="/admin" className="font-body text-[10px] tracking-[0.2em] bg-duch-black text-white px-2 py-1 rounded-sm hover:opacity-80 transition-opacity">
-                  ADMIN
-                </Link>
-              )}
               <button onClick={onLogout} className="flex items-center gap-1.5 hover:opacity-60 transition-opacity">
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                 <span className="font-body text-xs tracking-[0.2em]">LOGOUT</span>
@@ -164,11 +159,6 @@ export default function Header({ cartCount = 0, onCartOpen, user, onLogin, onLog
           <div className="border-t border-black/10 pt-5 mt-1">
             {user ? (
               <div className="flex flex-col gap-5">
-                {user.role === 'admin' && (
-                  <Link to="/admin" onClick={() => setMobileOpen(false)} className="font-body text-[13px] tracking-widest text-duch-black font-bold">
-                    ADMIN DASHBOARD
-                  </Link>
-                )}
                 <button onClick={() => { onLogout(); setMobileOpen(false); }} className="font-body text-[13px] tracking-widest text-left opacity-80 flex items-center gap-3">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                   LOGOUT

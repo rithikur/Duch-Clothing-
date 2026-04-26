@@ -172,12 +172,12 @@ export default function ProductDetail({ products, addToCart }) {
             </div>
           </div>
 
-          {/* Mobile Sticky Action Bar Wrapper */}
-          <div className="fixed bottom-0 left-0 right-0 p-4 bg-duch-bg border-t border-black/10 z-40 md:static md:p-0 md:bg-transparent md:border-none md:z-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] md:shadow-none transition-transform">
+          {/* Action Buttons Wrapper */}
+          <div className="mt-8 mb-8 flex flex-col gap-3">
             {/* Qty + Add to cart row */}
-            <div className="flex gap-3 mb-3">
+            <div className="flex gap-3">
               {/* Qty */}
-              <div className="hidden md:flex items-center border border-black/15 shrink-0">
+              <div className="flex items-center border border-black/15 shrink-0">
                 <button
                   onClick={() => setQty(q => Math.max(1, q - 1))}
                   className="w-11 h-12 flex items-center justify-center hover:bg-duch-black hover:text-white transition-colors text-xl"
@@ -208,13 +208,11 @@ export default function ProductDetail({ products, addToCart }) {
             <button
               onClick={handleAdd}
               disabled={outOfStock}
-              className="w-full h-12 font-body text-xs tracking-[0.2em] border-2 border-duch-black hover:bg-duch-black hover:text-white transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed md:mb-8"
+              className="w-full h-12 font-body text-xs tracking-[0.2em] border-2 border-duch-black hover:bg-duch-black hover:text-white transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed mb-2 md:mb-8"
             >
               BUY NOW
             </button>
           </div>
-          {/* Add a spacer on mobile to prevent footer from being hidden behind sticky bar */}
-          <div className="h-32 md:hidden"></div>
 
           {/* Description */}
           <div className="border-t border-black/8 pt-7 mb-7">

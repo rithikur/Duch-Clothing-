@@ -35,7 +35,11 @@ export default function Home({ products, addToCart }) {
             loading="eager"
             fetchpriority="high"
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/25" />
+          <div className="badge-pulse absolute top-6 right-6 bg-duch-black text-white px-4 py-3 -rotate-6 shadow-2xl z-20">
+            <p className="font-body text-[8px] tracking-[0.2em] mb-0.5">UP TO</p>
+            <p className="font-display text-xl font-bold leading-none">48% OFF</p>
+          </div>
         </div>
 
         {/* ── Desktop Right Image Panel ── */}
@@ -47,7 +51,7 @@ export default function Home({ products, addToCart }) {
               loading="eager"
               fetchpriority="high"
             />
-          <div className="absolute inset-0 bg-gradient-to-r from-duch-bg via-duch-bg/30 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-duch-bg/80 via-duch-bg/10 to-transparent pointer-events-none" />
           <div className="badge-pulse absolute top-12 right-10 bg-duch-black text-white px-5 py-4 -rotate-6 shadow-2xl z-20">
             <p className="font-body text-[10px] tracking-[0.2em] mb-0.5">UP TO</p>
             <p className="font-display text-2xl font-bold leading-none">48% OFF</p>
@@ -196,28 +200,39 @@ export default function Home({ products, addToCart }) {
         </div>
       </section>
 
-      {/* ─── SALE BANNER ─── */}
-      <section className="relative overflow-hidden bg-duch-black mx-6 md:mx-12 mb-20 p-10 md:p-16">
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <p className="font-body text-[10px] tracking-[0.3em] text-white/40 mb-2">— LIMITED TIME</p>
-            <h2 className="text-white leading-tight" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}>
-              GET UP TO<br />
-              <span className="text-[#b9a9cc]">48% OFF</span><br />
-              THIS SEASON
-            </h2>
-          </div>
-          <Link
-            to="/shop"
-            className="btn-shimmer shrink-0 border-2 border-white text-white font-body text-xs tracking-widest px-10 py-4 hover:bg-white hover:text-duch-black transition-all duration-300"
-          >
-            SHOP THE SALE
-          </Link>
+      {/* ─── JOIN THE CLUB (NEWSLETTER) ─── */}
+      <section className="bg-duch-black mx-6 md:mx-12 mb-20 p-10 md:p-16 flex flex-col md:flex-row gap-12 justify-between items-center text-white relative overflow-hidden">
+        <div className="md:w-1/2 relative z-10">
+          <p className="font-body text-[10px] tracking-[0.3em] text-white/40 mb-3">— JOIN THE CLUB</p>
+          <h2 className="font-display text-4xl md:text-5xl mb-4 leading-tight tracking-tight">
+            BE THE FIRST<br />TO KNOW.
+          </h2>
+          <p className="font-body text-xs text-white/60 tracking-[0.1em] max-w-sm leading-relaxed">
+            Subscribe to receive updates on exclusive releases, early access to sales, and our latest editorials. No spam, just fashion.
+          </p>
+        </div>
+        <div className="md:w-1/2 w-full max-w-md relative z-10">
+          <form className="flex flex-col gap-5" onSubmit={e => { e.preventDefault(); e.target.reset(); alert('Subscribed successfully!'); }}>
+            <div className="relative group">
+              <input 
+                type="email" 
+                placeholder="ENTER YOUR EMAIL" 
+                className="w-full bg-transparent border-b-2 border-white/20 px-0 py-3 font-body text-sm tracking-widest text-white placeholder:text-white/30 focus:outline-none focus:border-white transition-colors"
+                required
+              />
+            </div>
+            <button 
+              type="submit" 
+              className="bg-white text-duch-black font-body text-xs tracking-[0.2em] py-4 hover:opacity-80 transition-opacity btn-shimmer w-full"
+            >
+              SUBSCRIBE NOW
+            </button>
+          </form>
         </div>
         <span
-          className="absolute right-[-2%] top-1/2 -translate-y-1/2 font-display font-bold text-white/[0.04] select-none pointer-events-none leading-none"
+          className="absolute right-[-2%] top-1/2 -translate-y-1/2 font-display font-bold text-white/[0.02] select-none pointer-events-none leading-none"
           style={{ fontSize: 'clamp(80px,14vw,200px)' }}
-        >SALE</span>
+        >CLUB</span>
       </section>
     </div>
   );

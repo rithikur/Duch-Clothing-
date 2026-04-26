@@ -1,30 +1,67 @@
 import React, { useState } from 'react';
-import AuthModal from '../components/AuthModal';
+
 
 const Admin = ({ products, updateInventory, updatePrice, user, onLogin }) => {
-  const [authOpen, setAuthOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
   if (!user || user.role !== 'admin') {
+    const handleLogin = (e) => {
+      e.preventDefault();
+      if ((email === 'admin' || email === 'admin@duch.com') && password === 'admin123') {
+        onLogin('admin');
+      } else {
+        setError('Invalid administrator credentials.');
+      }
+    };
+
     return (
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-32 flex flex-col items-center justify-center text-center">
-        <div className="relative mb-10">
-          <div className="absolute inset-0 bg-red-500/10 blur-3xl rounded-full scale-150 animate-pulse" />
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="relative text-red-500">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-          </svg>
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-24 flex flex-col items-center justify-center">
+        <div className="w-full max-w-md bg-white p-8 md:p-10 shadow-2xl border border-black/5">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-black/5 rounded-full mb-4">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <h1 className="text-3xl font-display uppercase tracking-tight mb-2">RESTRICTED ACCESS</h1>
+            <p className="font-body text-xs text-black/50 tracking-widest uppercase">Admin Terminal V3.0</p>
+          </div>
+
+          {error && (
+            <div className="bg-red-50 text-red-600 font-body text-xs tracking-wide p-3 mb-6 text-center border border-red-100">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleLogin} className="space-y-5">
+            <div>
+              <label className="font-body text-[10px] tracking-[0.2em] text-black/50 uppercase block mb-2">Administrator ID</label>
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => { setEmail(e.target.value); setError(''); }}
+                className="w-full bg-zinc-50 border border-black/10 px-4 py-3 font-body text-sm outline-none focus:border-duch-black focus:bg-white transition-colors"
+                placeholder="admin"
+              />
+            </div>
+            <div>
+              <label className="font-body text-[10px] tracking-[0.2em] text-black/50 uppercase block mb-2">Passcode</label>
+              <input 
+                type="password" 
+                value={password}
+                onChange={(e) => { setPassword(e.target.value); setError(''); }}
+                className="w-full bg-zinc-50 border border-black/10 px-4 py-3 font-body text-sm outline-none focus:border-duch-black focus:bg-white transition-colors"
+                placeholder="••••••••"
+              />
+            </div>
+            <button type="submit" className="w-full bg-duch-black text-white py-4 font-body text-xs tracking-[0.2em] uppercase hover:bg-gray-800 transition-colors mt-4 btn-shimmer">
+              AUTHORIZE ACCESS
+            </button>
+          </form>
         </div>
-        <h1 className="text-4xl md:text-5xl mb-4 text-duch-black font-display tracking-tight">ACCESS DENIED</h1>
-        <p className="font-body text-sm text-black/50 tracking-[0.2em] max-w-sm mx-auto mb-10 leading-relaxed">
-          THIS IS A PROTECTED ARCHIVE. <br />
-          PLEASE AUTHENTICATE AS ADMINISTRATOR TO CONTINUE.
-        </p>
-        <button 
-          onClick={() => setAuthOpen(true)}
-          className="magnetic px-10 py-4 bg-duch-black text-white font-body text-[10px] tracking-[0.3em] hover:bg-zinc-800 transition-colors"
-        >
-          AUTHENTICATE
-        </button>
-        <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} onLogin={onLogin} />
       </div>
     );
   }
