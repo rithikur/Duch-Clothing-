@@ -138,8 +138,8 @@ export default function Home({ products, addToCart }) {
       </section>
 
       {/* ─── FLOATING OFFER & TRUST CARD ─── */}
-      <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 md:px-12 flex justify-center md:justify-end -mt-16 md:-mt-12 lg:-mt-16 mb-8 pointer-events-none">
-        <div className="bg-white/95 backdrop-blur-md p-5 sm:p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col sm:flex-row items-center gap-6 sm:gap-8 border border-white max-w-[92%] md:max-w-2xl transform rotate-1 pointer-events-auto hover:rotate-0 transition-transform duration-500">
+      <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 md:px-12 flex justify-center md:justify-end -mt-8 sm:-mt-12 lg:-mt-16 mb-8 pointer-events-none">
+        <div className="bg-white/95 backdrop-blur-md p-5 sm:p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col sm:flex-row items-center gap-6 sm:gap-8 border border-white max-w-[92%] md:max-w-2xl sm:rotate-1 pointer-events-auto hover:rotate-0 transition-transform duration-500">
            {/* Offer side */}
            <div className="flex flex-col items-center sm:items-start text-center sm:text-left border-b sm:border-b-0 sm:border-r border-black/10 pb-5 sm:pb-0 sm:pr-8 w-full sm:w-auto">
              <p className="font-body text-[10px] tracking-[0.3em] mb-1.5 text-black/50">LIMITED TIME</p>
@@ -148,7 +148,7 @@ export default function Home({ products, addToCart }) {
            </div>
            
            {/* Trust side */}
-           <div className="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
+           <div className="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start pt-2 sm:pt-0">
              <div className="flex -space-x-3">
                <img src="https://i.pravatar.cc/100?img=12" className="w-10 h-10 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
                <img src="https://i.pravatar.cc/100?img=33" className="w-10 h-10 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
