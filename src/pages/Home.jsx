@@ -12,6 +12,17 @@ const CATEGORY_TILES = [
 ];
 const MARQUEE_ITEMS = ['DUCH NEVER GOES OUT OF STYLE', 'A CLASSIC NEVER GOES OUT OF STYLE', 'PREMIUM MENSWEAR', 'NEW ARRIVALS NOW LIVE'];
 
+const REVIEWS = [
+  { name: 'Rizo', rating: 5, date: '6 months ago', text: "Absolutely loved the collection! I recently purchased a few shirts, a hoodie, and some pants — all of them are really good in quality and fit perfectly. The designs are stylish, comfortable, and worth the price. They have a lot of variety to choose from, and every piece feels premium. Definitely one of the best shopping experiences I've had. Highly recommend checking out their collection!" },
+  { name: 'A.A. Mohamed Arsath', rating: 5, date: '1 year ago', text: "Trendy fashion offers a wide range of stylish and modern clothing for men keeping up with the latest trends. High quality materials — uses premium fabrics to ensure comfort, durability, and a luxurious feel in every piece. Diverse collection includes casual wear, formal wear, ethnic outfits, party attire, and accessories." },
+  { name: 'Vishnu Vimalesh', rating: 5, date: '5 months ago', text: "Great shopping experience — trendy designs at reasonable prices. The fitting was perfect, and the fabric quality really stood out. Highly recommended!" },
+  { name: 'Dinesh Kumar', rating: 5, date: '2 years ago', text: "I visited this shop for a T-shirt purchase after seeing their Instagram posts — they have a great trending collection. Their customer service is so good! If you want suggestions regarding any outfit, just ask them. Highly satisfied with their customer service!" },
+  { name: 'Kumaraguru Arunagiri', rating: 5, date: '2 months ago', text: "The material and comfort of the shirts and T-shirts are good. The dry fit shirts are also awesome. Worth buying!" },
+  { name: 'Sadhana', rating: 5, date: '2 months ago', text: "One of the coolest outfits for men in town with various colour options and sizes at affordable prices. Must try!" },
+  { name: 'Rahul Bala', rating: 4, date: '7 months ago', text: "Bought some T-shirts and shirts which were of good quality. Not a vast collection, and found the prices a bit on the higher side, but overall a good experience." },
+  { name: 'Naveen S', rating: 5, date: '1 year ago', text: "Nice collection — both formals and casuals are good. They carry brands like Zara, Red Rabbit, and more. It's a hidden gem! Didn't have enough time to see everything, will definitely visit again." },
+];
+
 export default function Home({ products, addToCart }) {
   const featured = FEATURED_IDS.map(id => products.find(p => p.id === id)).filter(Boolean);
 
@@ -25,7 +36,7 @@ export default function Home({ products, addToCart }) {
           left text drives the section height.
           No viewport calculations needed.
       ══════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-duch-bg h-[calc(100dvh-106px)] lg:h-auto lg:min-h-[calc(100dvh-150px)] flex flex-col lg:flex-row lg:items-center">
+      <section className="relative overflow-hidden bg-duch-bg h-[calc(100svh-106px)] lg:h-auto lg:min-h-[calc(100svh-150px)] flex flex-col lg:flex-row lg:items-center">
         {/* ── Mobile Background Image (Cinematic Full Bleed) ── */}
         <div className="absolute inset-0 lg:hidden w-full h-full overflow-hidden z-0">
           <img
@@ -36,10 +47,7 @@ export default function Home({ products, addToCart }) {
             fetchpriority="high"
           />
           <div className="absolute inset-0 bg-black/25" />
-          <div className="badge-pulse absolute top-6 right-6 bg-duch-black text-white px-4 py-3 -rotate-6 shadow-2xl z-20">
-            <p className="font-body text-[8px] tracking-[0.2em] mb-0.5">UP TO</p>
-            <p className="font-display text-xl font-bold leading-none">48% OFF</p>
-          </div>
+          {/* Removed old top badge to replace with bottom floating off card */}
         </div>
 
         {/* ── Desktop Right Image Panel ── */}
@@ -52,10 +60,7 @@ export default function Home({ products, addToCart }) {
               fetchpriority="high"
             />
           <div className="absolute inset-0 bg-gradient-to-r from-duch-bg/80 via-duch-bg/10 to-transparent pointer-events-none" />
-          <div className="badge-pulse absolute top-12 right-10 bg-duch-black text-white px-5 py-4 -rotate-6 shadow-2xl z-20">
-            <p className="font-body text-[10px] tracking-[0.2em] mb-0.5">UP TO</p>
-            <p className="font-display text-2xl font-bold leading-none">48% OFF</p>
-          </div>
+          {/* Removed old top badge to replace with bottom floating off card */}
           <div className="absolute bottom-8 right-8 z-20 text-right">
             <p className="font-body text-[10px] tracking-[0.3em] text-white/50 mb-1">EST. 2020</p>
             <p className="font-display text-white text-sm tracking-widest">DUCH CLOTHING</p>
@@ -132,6 +137,39 @@ export default function Home({ products, addToCart }) {
         </div>
       </section>
 
+      {/* ─── FLOATING OFFER & TRUST CARD ─── */}
+      <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 md:px-12 flex justify-center md:justify-end -mt-16 md:-mt-12 lg:-mt-16 mb-8 pointer-events-none">
+        <div className="bg-white/95 backdrop-blur-md p-5 sm:p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col sm:flex-row items-center gap-6 sm:gap-8 border border-white max-w-[92%] md:max-w-2xl transform rotate-1 pointer-events-auto hover:rotate-0 transition-transform duration-500">
+           {/* Offer side */}
+           <div className="flex flex-col items-center sm:items-start text-center sm:text-left border-b sm:border-b-0 sm:border-r border-black/10 pb-5 sm:pb-0 sm:pr-8 w-full sm:w-auto">
+             <p className="font-body text-[10px] tracking-[0.3em] mb-1.5 text-black/50">LIMITED TIME</p>
+             <p className="font-display text-3xl md:text-4xl font-bold leading-none text-duch-black whitespace-nowrap">48% OFF</p>
+             <p className="font-body text-[10px] tracking-widest text-black/40 mt-2">USE CODE: DUCH48</p>
+           </div>
+           
+           {/* Trust side */}
+           <div className="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
+             <div className="flex -space-x-3">
+               <img src="https://i.pravatar.cc/100?img=12" className="w-10 h-10 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
+               <img src="https://i.pravatar.cc/100?img=33" className="w-10 h-10 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
+               <img src="https://i.pravatar.cc/100?img=47" className="w-10 h-10 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
+               <div className="w-10 h-10 rounded-full border-[3px] border-white bg-duch-black text-white flex items-center justify-center text-[11px] font-bold shadow-sm z-10">+</div>
+             </div>
+             <div className="text-left">
+               <p className="font-display font-bold text-sm leading-none text-duch-black mb-1 whitespace-nowrap">4K+ HAPPY</p>
+               <p className="font-body text-[10px] tracking-widest text-black/60">CUSTOMERS</p>
+               <div className="flex items-center gap-1 mt-1.5 whitespace-nowrap">
+                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-black/40">
+                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                   <circle cx="12" cy="10" r="3"></circle>
+                 </svg>
+                 <span className="font-body text-[9px] tracking-wider text-black/50">INDIA & GLOBAL</span>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+
       {/* ─── MARQUEE — fully straight ─── */}
       <div className="w-full bg-duch-black overflow-hidden" style={{ height: '52px' }}>
         <div className="flex whitespace-nowrap h-full items-center">
@@ -196,6 +234,36 @@ export default function Home({ products, addToCart }) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           {featured.map((p, i) => (
             <ProductCard key={p.id} product={p} addToCart={addToCart} index={i} />
+          ))}
+        </div>
+      </section>
+
+      {/* ─── WALL OF LOVE (REVIEWS) ─── */}
+      <section className="overflow-hidden bg-white py-16 md:py-24 border-t border-black/5">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 mb-10 flex flex-col items-center text-center">
+          <p className="font-body text-[10px] tracking-[0.35em] text-black/35 mb-2">— WALL OF LOVE</p>
+          <h2 className="text-3xl md:text-4xl text-duch-black">WHAT THEY SAY</h2>
+        </div>
+        
+        {/* Row 1: Left moving */}
+        <div className="flex whitespace-nowrap mb-6 group hover:[&>div]:[animation-play-state:paused] items-stretch">
+          {[0, 1].map(i => (
+            <div key={i} className="ticker-content flex shrink-0 gap-6 pr-6" style={{ animationDuration: '60s' }} aria-hidden={i === 1}>
+              {REVIEWS.map((r, j) => (
+                <ReviewCard key={`r1-${j}`} review={r} />
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Row 2: Right moving */}
+        <div className="flex whitespace-nowrap group hover:[&>div]:[animation-play-state:paused] items-stretch">
+          {[0, 1].map(i => (
+            <div key={i} className="ticker-content flex shrink-0 gap-6 pr-6" style={{ animationDuration: '70s', animationDirection: 'reverse' }} aria-hidden={i === 1}>
+              {[...REVIEWS].reverse().map((r, j) => (
+                <ReviewCard key={`r2-${j}`} review={r} />
+              ))}
+            </div>
           ))}
         </div>
       </section>
@@ -265,6 +333,27 @@ function ProductCard({ product, addToCart, index }) {
           )}
         </div>
       </Link>
+    </div>
+  );
+}
+
+function ReviewCard({ review }) {
+  return (
+    <div className="w-[320px] md:w-[400px] whitespace-normal bg-duch-bg p-6 md:p-8 flex flex-col shrink-0 border border-black/5 rounded-sm h-full">
+      <div className="flex items-center gap-1 mb-4">
+        {[...Array(5)].map((_, i) => (
+          <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={i < review.rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" className={i < review.rating ? "text-duch-black" : "text-black/20"}>
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        ))}
+      </div>
+      <p className="font-body text-sm leading-relaxed text-black/80 mb-6 flex-grow italic">
+        "{review.text}"
+      </p>
+      <div className="flex items-center justify-between mt-auto pt-4 border-t border-black/10">
+        <p className="font-display font-bold text-sm text-duch-black truncate max-w-[180px]">{review.name}</p>
+        <p className="font-body text-[10px] tracking-widest text-black/40 uppercase">{review.date}</p>
+      </div>
     </div>
   );
 }
