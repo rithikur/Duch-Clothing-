@@ -3,6 +3,21 @@ import { useParams, Link } from 'react-router-dom';
 
 const SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
 
+function Accordion({ title, children }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-t border-black/8">
+      <button onClick={() => setOpen(!open)} className="w-full py-5 flex items-center justify-between group">
+        <span className="font-body text-xs tracking-[0.2em] uppercase text-black/70 group-hover:text-black transition-colors">{title}</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={`transition-transform duration-300 ${open ? 'rotate-180' : ''}`}><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-96 opacity-100 pb-5' : 'max-h-0 opacity-0'}`}>
+        <div className="font-body text-xs leading-relaxed text-black/60 space-y-2">{children}</div>
+      </div>
+    </div>
+  );
+}
+
 export default function ProductDetail({ products, addToCart }) {
   const { id }      = useParams();
   const product     = products.find(p => p.id === Number(id));
@@ -220,20 +235,41 @@ export default function ProductDetail({ products, addToCart }) {
             <p className="font-body text-sm leading-relaxed text-black/65">{product.description}</p>
           </div>
 
+          {/* Accordions */}
+          <div className="mb-8">
+            <Accordion title="Details & Fit">
+              <p>• Premium heavyweight cotton blend.</p>
+              <p>• True to size for a relaxed, comfortable fit.</p>
+              <p>• Tailored structure for an elevated look.</p>
+            </Accordion>
+            <Accordion title="Washcare">
+              <p>• Machine wash cold, inside out.</p>
+              <p>• Tumble dry on low or hang dry to preserve print.</p>
+              <p>• Do not iron directly on the design.</p>
+            </Accordion>
+            <Accordion title="Disclosures">
+              <p>• Colors may slightly vary depending on screen settings.</p>
+              <p>• 100% authentically sourced and sustainably packaged.</p>
+            </Accordion>
+          </div>
+
           {/* Shipping features */}
-          <div className="border-t border-black/8 pt-7">
-            <div className="grid grid-cols-3 gap-4 text-center">
-              {[
-                ['🚚', 'Free Delivery', '₹999+'],
-                ['↩', 'Easy Returns', '7 days'],
-                ['🔒', 'Secure Pay', 'Encrypted'],
-              ].map(([icon, title, sub]) => (
-                <div key={title} className="flex flex-col items-center gap-1.5">
-                  <span className="text-2xl">{icon}</span>
-                  <p className="font-body text-xs font-medium">{title}</p>
-                  <p className="font-body text-[10px] text-black/35 tracking-wide">{sub}</p>
-                </div>
-              ))}
+          <div className="border-t border-black/8 py-6 space-y-4">
+            <div className="flex items-center gap-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" className="text-black/60 shrink-0"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <p className="font-body text-xs tracking-wide text-black/70">Delivery in 3 to 5 business days.</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" className="text-black/60 shrink-0"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+              <p className="font-body text-xs tracking-wide text-black/70">Easy 15 days returns on all orders.</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" className="text-black/60 shrink-0"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
+              <p className="font-body text-xs tracking-wide text-black/70">Cash on Delivery available at checkout.</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" className="text-black/60 shrink-0"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+              <p className="font-body text-xs tracking-wide text-black/70">Free Shipping for orders above ₹999.</p>
             </div>
           </div>
         </div>

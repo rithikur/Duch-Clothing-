@@ -23,7 +23,7 @@ const REVIEWS = [
   { name: 'Naveen S', rating: 5, date: '1 year ago', text: "Nice collection — both formals and casuals are good. They carry brands like Zara, Red Rabbit, and more. It's a hidden gem! Didn't have enough time to see everything, will definitely visit again." },
 ];
 
-export default function Home({ products, addToCart }) {
+export default function Home({ products, banners = [], addToCart }) {
   const featured = FEATURED_IDS.map(id => products.find(p => p.id === id)).filter(Boolean);
 
   return (
@@ -38,20 +38,8 @@ export default function Home({ products, addToCart }) {
       ══════════════════════════════════ */}
       <section className="relative overflow-hidden bg-duch-bg h-[calc(100svh-106px)] lg:h-auto lg:min-h-[calc(100svh-150px)] flex flex-col lg:flex-row lg:items-center">
         {/* ── Mobile Background Image (Cinematic Full Bleed) ── */}
-        <div className="absolute inset-0 lg:hidden w-full h-full overflow-hidden z-0">
-          <img
-            src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?q=80&w=2000"
-            alt="DUCH Hero"
-            className="w-full h-full object-cover object-top"
-            loading="eager"
-            fetchpriority="high"
-          />
-          <div className="absolute inset-0 bg-black/25" />
-          {/* Removed old top badge to replace with bottom floating off card */}
-        </div>
-
-        {/* ── Desktop Right Image Panel ── */}
-        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[52%] overflow-hidden z-0">
+        <div className="absolute inset-0 lg:hidden w-full h-full overflow-hidden z-0 p-6 pt-24 pb-32">
+          <div className="w-full h-full bg-white p-2 sm:p-3 shadow-xl stamp-cutout rotate-[-1deg]">
             <img
               src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?q=80&w=2000"
               alt="DUCH Hero"
@@ -59,9 +47,24 @@ export default function Home({ products, addToCart }) {
               loading="eager"
               fetchpriority="high"
             />
-          <div className="absolute inset-0 bg-gradient-to-r from-duch-bg/80 via-duch-bg/10 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-black/30" />
+          </div>
+        </div>
+
+        {/* ── Desktop Right Image Panel ── */}
+        <div className="hidden lg:flex absolute right-0 top-0 bottom-0 w-[52%] overflow-hidden z-0 items-center justify-center p-12 pr-16 pl-0">
+          <div className="w-full h-[90%] bg-white p-4 shadow-2xl stamp-cutout rotate-2 hover:rotate-0 transition-transform duration-700">
+            <img
+              src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?q=80&w=2000"
+              alt="DUCH Hero"
+              className="w-full h-full object-cover object-top"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-duch-bg/40 via-transparent to-transparent pointer-events-none" />
+          </div>
           {/* Removed old top badge to replace with bottom floating off card */}
-          <div className="absolute bottom-8 right-8 z-20 text-right">
+          <div className="absolute bottom-12 right-12 z-20 text-right">
             <p className="font-body text-[10px] tracking-[0.3em] text-white/50 mb-1">EST. 2020</p>
             <p className="font-display text-white text-sm tracking-widest">DUCH CLOTHING</p>
           </div>
@@ -138,32 +141,32 @@ export default function Home({ products, addToCart }) {
       </section>
 
       {/* ─── FLOATING OFFER & TRUST CARD ─── */}
-      <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 md:px-12 flex justify-center md:justify-end -mt-8 sm:-mt-12 lg:-mt-16 mb-8 pointer-events-none">
-        <div className="bg-white/95 backdrop-blur-md p-5 sm:p-6 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.3)] flex flex-col sm:flex-row items-center gap-6 sm:gap-8 border border-white max-w-[92%] md:max-w-2xl sm:rotate-1 pointer-events-auto hover:rotate-0 transition-transform duration-500">
+      <div className="relative z-30 w-full max-w-[1440px] mx-auto px-6 md:px-12 flex justify-center md:justify-end mt-6 sm:-mt-12 lg:-mt-16 mb-8 pointer-events-none">
+        <div className="bg-white/95 backdrop-blur-md p-8 sm:p-10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col sm:flex-row items-center gap-8 sm:gap-10 border-2 border-duch-black max-w-[95%] md:max-w-3xl sm:rotate-2 pointer-events-auto hover:rotate-0 transition-transform duration-500 scale-105 sm:scale-110 origin-bottom-right">
            {/* Offer side */}
-           <div className="flex flex-col items-center sm:items-start text-center sm:text-left border-b sm:border-b-0 sm:border-r border-black/10 pb-5 sm:pb-0 sm:pr-8 w-full sm:w-auto">
-             <p className="font-body text-[10px] tracking-[0.3em] mb-1.5 text-black/50">LIMITED TIME</p>
-             <p className="font-display text-3xl md:text-4xl font-bold leading-none text-duch-black whitespace-nowrap">48% OFF</p>
-             <p className="font-body text-[10px] tracking-widest text-black/40 mt-2">USE CODE: DUCH48</p>
+           <div className="flex flex-col items-center sm:items-start text-center sm:text-left border-b sm:border-b-0 sm:border-r border-black/20 pb-6 sm:pb-0 sm:pr-10 w-full sm:w-auto">
+             <p className="font-body text-[12px] tracking-[0.3em] mb-2 text-black/60 font-bold">LIMITED TIME</p>
+             <p className="font-display text-5xl md:text-6xl font-bold leading-none text-duch-black whitespace-nowrap">48% OFF</p>
+             <p className="font-body text-[12px] tracking-widest text-black/60 mt-3 font-bold">USE CODE: DUCH48</p>
            </div>
            
            {/* Trust side */}
-           <div className="flex items-center gap-4 w-full sm:w-auto justify-center sm:justify-start pt-2 sm:pt-0">
+           <div className="flex items-center gap-5 w-full sm:w-auto justify-center sm:justify-start pt-3 sm:pt-0">
              <div className="flex -space-x-3">
-               <img src="https://i.pravatar.cc/100?img=12" className="w-10 h-10 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
-               <img src="https://i.pravatar.cc/100?img=33" className="w-10 h-10 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
-               <img src="https://i.pravatar.cc/100?img=47" className="w-10 h-10 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
-               <div className="w-10 h-10 rounded-full border-[3px] border-white bg-duch-black text-white flex items-center justify-center text-[11px] font-bold shadow-sm z-10">+</div>
+               <img src="https://i.pravatar.cc/100?img=12" className="w-12 h-12 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
+               <img src="https://i.pravatar.cc/100?img=33" className="w-12 h-12 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
+               <img src="https://i.pravatar.cc/100?img=47" className="w-12 h-12 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
+               <div className="w-12 h-12 rounded-full border-[3px] border-white bg-duch-black text-white flex items-center justify-center text-[13px] font-bold shadow-sm z-10">+</div>
              </div>
              <div className="text-left">
-               <p className="font-display font-bold text-sm leading-none text-duch-black mb-1 whitespace-nowrap">4K+ HAPPY</p>
-               <p className="font-body text-[10px] tracking-widest text-black/60">CUSTOMERS</p>
-               <div className="flex items-center gap-1 mt-1.5 whitespace-nowrap">
-                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-black/40">
+               <p className="font-display font-bold text-base leading-none text-duch-black mb-1.5 whitespace-nowrap">4K+ HAPPY</p>
+               <p className="font-body text-[11px] tracking-widest text-black/70 font-bold">CUSTOMERS</p>
+               <div className="flex items-center gap-1.5 mt-2 whitespace-nowrap">
+                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-black/60">
                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                    <circle cx="12" cy="10" r="3"></circle>
                  </svg>
-                 <span className="font-body text-[9px] tracking-wider text-black/50">INDIA & GLOBAL</span>
+                 <span className="font-body text-[10px] tracking-wider text-black/60 font-bold">INDIA & GLOBAL</span>
                </div>
              </div>
            </div>
@@ -184,6 +187,45 @@ export default function Home({ products, addToCart }) {
           ))}
         </div>
       </div>
+
+      {/* ─── SALES POSTERS SECTION ─── */}
+      <section className="max-w-[1440px] mx-auto px-6 md:px-12 py-16">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <p className="font-body text-[10px] tracking-[0.35em] text-black/35 mb-1.5">— EXCLUSIVE OFFERS</p>
+            <h2 className="text-3xl md:text-4xl">LATEST DROPS</h2>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="relative group overflow-hidden bg-gray-100 aspect-[4/5]">
+            <img src="https://images.unsplash.com/photo-1550614000-4b95d466f230?q=80&w=1000" alt="Summer Sale" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+            <div className="absolute inset-0 p-8 flex flex-col justify-end">
+              <span className="bg-white text-duch-black font-body text-[10px] tracking-widest px-3 py-1 mb-3 w-fit">FLAT 50% OFF</span>
+              <h3 className="font-display text-white text-3xl font-bold mb-2">SUMMER<br/>COLLECTION</h3>
+              <Link to="/shop?cat=T-Shirts" className="font-body text-white text-xs tracking-[0.2em] uppercase border-b border-white/50 w-fit pb-1 hover:border-white transition-colors">Shop Now</Link>
+            </div>
+          </div>
+          <div className="relative group overflow-hidden bg-gray-100 aspect-[4/5]">
+            <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1000" alt="Streetwear Collection" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+            <div className="absolute inset-0 p-8 flex flex-col justify-end">
+              <span className="bg-duch-black text-white font-body text-[10px] tracking-widest px-3 py-1 mb-3 w-fit">NEW ARRIVAL</span>
+              <h3 className="font-display text-white text-3xl font-bold mb-2">URBAN<br/>STREETWEAR</h3>
+              <Link to="/shop?cat=Jackets" className="font-body text-white text-xs tracking-[0.2em] uppercase border-b border-white/50 w-fit pb-1 hover:border-white transition-colors">Explore</Link>
+            </div>
+          </div>
+          <div className="relative group overflow-hidden bg-gray-100 aspect-[4/5] md:col-span-2 lg:col-span-1">
+            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=1000" alt="Premium Tailoring" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+            <div className="absolute inset-0 p-8 flex flex-col justify-end">
+              <span className="bg-white text-duch-black font-body text-[10px] tracking-widest px-3 py-1 mb-3 w-fit">LUXURY EDIT</span>
+              <h3 className="font-display text-white text-3xl font-bold mb-2">PREMIUM<br/>TAILORING</h3>
+              <Link to="/shop?cat=Formal" className="font-body text-white text-xs tracking-[0.2em] uppercase border-b border-white/50 w-fit pb-1 hover:border-white transition-colors">Discover</Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ─── SHOP BY CATEGORY ─── */}
       <section id="categories" className="max-w-[1440px] mx-auto px-6 md:px-12 py-16">
@@ -268,6 +310,23 @@ export default function Home({ products, addToCart }) {
         </div>
       </section>
 
+      {/* ─── PROMOTIONAL BANNERS ─── */}
+      {banners && banners.length > 0 && (
+        <section className="mb-20 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[3px]">
+            {banners.map(banner => (
+              <Link key={banner.id} to={banner.link || '/shop'} className="group relative block overflow-hidden aspect-[16/9] md:aspect-[2/1] bg-gray-100">
+                <img 
+                  src={banner.image} 
+                  alt={banner.title || 'Promotional Banner'} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* ─── JOIN THE CLUB (NEWSLETTER) ─── */}
       <section className="bg-duch-black mx-6 md:mx-12 mb-20 p-10 md:p-16 flex flex-col md:flex-row gap-12 justify-between items-center text-white relative overflow-hidden">
         <div className="md:w-1/2 relative z-10">
@@ -307,9 +366,15 @@ export default function Home({ products, addToCart }) {
 }
 
 function ProductCard({ product, addToCart, index }) {
+  const [isWishlisted, setIsWishlisted] = React.useState(false);
+  const [heartAnim, setHeartAnim] = React.useState(false);
   const outOfStock = product.inventory === 0;
+
   return (
-    <div className="group card-enter" style={{ animationDelay: `${index * 0.08}s` }}>
+    <div 
+      className="group card-enter relative" 
+      style={{ animationDelay: `${index * 0.08}s` }}
+    >
       <Link to={`/product/${product.id}`} className="block relative overflow-hidden bg-gray-100 aspect-[3/4] mb-3">
         {product.discount > 0 && (
           <span className="absolute top-3 left-3 z-10 bg-duch-black text-white text-[10px] font-body tracking-widest px-2 py-1">{product.discount}% OFF</span>
@@ -317,13 +382,30 @@ function ProductCard({ product, addToCart, index }) {
         <img src={product.image} alt={product.title} className="w-full h-full object-cover object-top premium-image" />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
       </Link>
-      <button
-        onClick={() => !outOfStock && addToCart(product, 'M', 1)}
-        disabled={outOfStock}
-        className={`w-full text-xs font-body tracking-widest py-2.5 mb-3 transition-all duration-300 ${outOfStock ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-duch-black text-white hover:bg-gray-800 opacity-0 group-hover:opacity-100'}`}
-      >
-        {outOfStock ? 'OUT OF STOCK' : 'ADD TO CART'}
-      </button>
+      <div className="flex items-center gap-2 mb-3 relative z-10">
+        <button
+          onClick={() => !outOfStock && addToCart(product, 'M', 1)}
+          disabled={outOfStock}
+          className={`flex-1 text-xs font-body tracking-widest py-2.5 transition-all duration-300 ${outOfStock ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-duch-black text-white hover:bg-gray-800'}`}
+        >
+          {outOfStock ? 'OUT OF STOCK' : 'ADD TO CART'}
+        </button>
+        <button 
+          onClick={() => setIsWishlisted(prev => {
+            if (!prev) {
+              setHeartAnim(true);
+              setTimeout(() => setHeartAnim(false), 400);
+            }
+            return !prev;
+          })}
+          className={`w-10 h-10 flex shrink-0 items-center justify-center border border-black/10 transition-colors ${isWishlisted ? 'text-red-500' : 'text-duch-black hover:bg-black/5'} ${heartAnim ? 'animate-heart-pop' : ''}`}
+          aria-label="Wishlist"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill={isWishlisted ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </button>
+      </div>
       <Link to={`/product/${product.id}`}>
         <h3 className="font-body text-sm mb-1 hover:opacity-60 transition-opacity">{product.title}</h3>
         <div className="flex items-center gap-3">

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const Admin = ({ products, updateInventory, updatePrice, user, onLogin }) => {
+const Admin = ({ products, banners = [], updateInventory, updatePrice, updateBanner, user, onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -118,6 +118,23 @@ const Admin = ({ products, updateInventory, updatePrice, user, onLogin }) => {
         ))}
       </div>
 
+      {/* ── Banner Registry ── */}
+      <div className="mt-16 mb-8 flex items-center justify-between border-b border-black/10 pb-4">
+        <h2 className="font-display text-xl tracking-tight">PROMOTIONAL_BANNERS</h2>
+        <span className="font-body text-[10px] tracking-widest opacity-40">{banners.length} SLOTS</span>
+      </div>
+
+      <div className="grid grid-cols-1 gap-px bg-black/10 border border-black/10 overflow-hidden rounded-sm">
+        {banners.map((banner, i) => (
+          <BannerRow
+            key={banner.id}
+            banner={banner}
+            updateBanner={updateBanner}
+            index={i}
+          />
+        ))}
+      </div>
+
       <div className="mt-12 flex items-center gap-4 p-6 bg-zinc-50 border border-black/5">
         <div className="w-2 h-2 bg-duch-black rounded-full animate-pulse" />
         <p className="font-body text-[10px] text-black/40 tracking-[0.2em] uppercase">
@@ -199,5 +216,36 @@ const AdminRow = ({ product, updateInventory, updatePrice, index }) => {
   );
 };
 
-export default Admin;
+const BannerRow = ({ banner, updateBanner, index }) => {
+  const [localImage, setLocalImage] = useState(banner.image);
 
+  return (
+    <div className="bg-white p-6 flex flex-col md:flex-row md:items-center justify-between gap-8 hover:bg-zinc-50 transition-colors duration-300">
+      <div className="flex items-center gap-6 md:w-1/3">
+        <span className="font-display text-[10px] opacity-20 w-6">{(index + 1).toString().padStart(2, '0')}</span>
+        <div className="w-24 h-14 overflow-hidden bg-zinc-100 shrink-0 transition-all duration-700">
+          <img src={banner.image} alt={banner.title} className="w-full h-full object-cover" />
+        </div>
+        <div>
+          <h3 className="font-display font-bold text-sm tracking-tight mb-1">{banner.title}</h3>
+          <p className="font-body text-[9px] tracking-[0.25em] text-black/30 uppercase">SLOT {banner.id}</p>
+        </div>
+      </div>
+
+      <div className="flex flex-wrap md:flex-nowrap items-center gap-10 md:w-2/3 justify-end">
+        <div className="flex flex-col items-end flex-1">
+          <label className="font-body text-[8px] tracking-[0.3em] text-black/30 mb-2 uppercase">Image URL</label>
+          <input
+            type="text"
+            value={localImage}
+            onChange={e => { setLocalImage(e.target.value); updateBanner(banner.id, e.target.value); }}
+            className="w-full max-w-lg px-4 py-2.5 bg-zinc-50 border-b-2 border-black/5 font-body text-xs focus:outline-none focus:border-duch-black focus:bg-white transition-all text-right"
+            placeholder="https://..."
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Admin;

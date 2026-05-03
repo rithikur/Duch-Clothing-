@@ -74,13 +74,28 @@ export default function Header({ cartCount = 0, onCartOpen, user, onLogin, onLog
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-5 justify-end w-1/3">
+        <div className="flex items-center gap-4 md:gap-5 justify-end w-1/3">
+          <Link to="/wishlist" className="magnetic hidden md:flex items-center gap-1.5 hover:opacity-60 transition-opacity">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <span className="font-body text-xs tracking-[0.2em]">WISHLIST</span>
+          </Link>
           {user ? (
-            <div className="hidden md:flex items-center gap-4">
-              <button onClick={onLogout} className="flex items-center gap-1.5 hover:opacity-60 transition-opacity">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-                <span className="font-body text-xs tracking-[0.2em]">LOGOUT</span>
-              </button>
+            <div className="hidden md:flex relative group items-center gap-1.5 cursor-pointer transition-opacity h-full">
+              <span className="magnetic flex items-center gap-1.5 hover:opacity-60">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span className="font-body text-xs tracking-[0.2em]">PROFILE</span>
+              </span>
+              <div className="absolute top-6 right-0 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="bg-white border border-black/10 shadow-xl py-3 w-48 flex flex-col">
+                  <Link to="/profile" className="font-body text-[11px] tracking-widest px-5 py-2.5 hover:bg-black/5 text-duch-black transition-colors">MY ACCOUNT</Link>
+                  <Link to="/profile?premium=true" className="font-body text-[11px] tracking-widest px-5 py-2.5 hover:bg-black/5 text-duch-black flex items-center gap-2 transition-colors">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    PREMIUM CLUB
+                  </Link>
+                  <hr className="my-2 border-black/5 mx-5" />
+                  <button onClick={onLogout} className="text-left font-body text-[11px] tracking-widest px-5 py-2 hover:bg-black/5 text-red-500 transition-colors">LOGOUT</button>
+                </div>
+              </div>
             </div>
           ) : (
             <button onClick={() => setAuthOpen(true)} className="magnetic hidden md:flex items-center gap-1.5 hover:opacity-60 transition-opacity">
@@ -154,12 +169,24 @@ export default function Header({ cartCount = 0, onCartOpen, user, onLogin, onLog
                 {link.label}
               </Link>
             ))}
+            <Link to="/wishlist" onClick={() => setMobileOpen(false)} className="font-body text-[13px] tracking-widest opacity-80 hover:opacity-100 transition-opacity flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              WISHLIST
+            </Link>
           </div>
           
           <div className="border-t border-black/10 pt-5 mt-1">
             {user ? (
               <div className="flex flex-col gap-5">
-                <button onClick={() => { onLogout(); setMobileOpen(false); }} className="font-body text-[13px] tracking-widest text-left opacity-80 flex items-center gap-3">
+                <Link to="/profile" onClick={() => setMobileOpen(false)} className="font-body text-[13px] tracking-widest text-left opacity-80 flex items-center gap-3">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  MY ACCOUNT
+                </Link>
+                <Link to="/profile?premium=true" onClick={() => setMobileOpen(false)} className="font-body text-[13px] tracking-widest text-left opacity-80 flex items-center gap-3">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  PREMIUM CLUB
+                </Link>
+                <button onClick={() => { onLogout(); setMobileOpen(false); }} className="font-body text-[13px] tracking-widest text-left opacity-80 flex items-center gap-3 text-red-500 mt-2">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                   LOGOUT
                 </button>

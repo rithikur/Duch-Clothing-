@@ -167,4 +167,42 @@
     0%   { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
   }
+
+  /* ── Swipe Animations ── */
+  @keyframes slideUpCart {
+    0% { transform: translate(-50%, 150%); opacity: 0; }
+    15% { transform: translate(-50%, 0); opacity: 1; }
+    85% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, 150%); opacity: 0; }
+  }
+  .animate-slide-up-cart {
+    animation: slideUpCart 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+
+  /* ── Stamp Cutout ── */
+  .stamp-cutout {
+    --r: 14px; /* radius of the cutouts */
+    --space: 52px; /* distance between cutout centers */
+    -webkit-mask:
+      radial-gradient(circle at center top, transparent var(--r), black calc(var(--r) + 0.5px)) top / var(--space) var(--r) repeat-x,
+      radial-gradient(circle at center bottom, transparent var(--r), black calc(var(--r) + 0.5px)) bottom / var(--space) var(--r) repeat-x,
+      radial-gradient(circle at left center, transparent var(--r), black calc(var(--r) + 0.5px)) left / var(--r) var(--space) repeat-y,
+      radial-gradient(circle at right center, transparent var(--r), black calc(var(--r) + 0.5px)) right / var(--r) var(--space) repeat-y,
+      linear-gradient(black, black) center / calc(100% - var(--r)*2) calc(100% - var(--r)*2) no-repeat;
+    mask:
+      radial-gradient(circle at center top, transparent var(--r), black calc(var(--r) + 0.5px)) top / var(--space) var(--r) repeat-x,
+      radial-gradient(circle at center bottom, transparent var(--r), black calc(var(--r) + 0.5px)) bottom / var(--space) var(--r) repeat-x,
+      radial-gradient(circle at left center, transparent var(--r), black calc(var(--r) + 0.5px)) left / var(--r) var(--space) repeat-y,
+      radial-gradient(circle at right center, transparent var(--r), black calc(var(--r) + 0.5px)) right / var(--r) var(--space) repeat-y,
+      linear-gradient(black, black) center / calc(100% - var(--r)*2) calc(100% - var(--r)*2) no-repeat;
+  }
+
+  @keyframes heartPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.6); color: #ef4444; }
+    100% { transform: scale(1); }
+  }
+  .animate-heart-pop {
+    animation: heartPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
 }

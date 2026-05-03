@@ -172,9 +172,15 @@ export default function Shop({ products, addToCart }) {
 }
 
 function ShopCard({ product, addToCart, index }) {
+  const [isWishlisted, setIsWishlisted] = React.useState(false);
+  const [heartAnim, setHeartAnim] = React.useState(false);
   const outOfStock = product.inventory === 0;
+
   return (
-    <div className="group card-enter" style={{ animationDelay: `${Math.min(index * 0.05, 0.5)}s` }}>
+    <div 
+      className="group card-enter relative" 
+      style={{ animationDelay: `${Math.min(index * 0.05, 0.5)}s` }}
+    >
       {/* Image */}
       <Link to={`/product/${product.id}`} className="block relative overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
         {product.discount > 0 && (
@@ -186,14 +192,31 @@ function ShopCard({ product, addToCart, index }) {
         <img src={product.image} alt={product.title} className="w-full h-full object-cover object-top premium-image" loading="lazy" />
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
       </Link>
-      {/* Add to cart */}
-      <button
-        disabled={outOfStock}
-        onClick={() => !outOfStock && addToCart(product, 'M', 1)}
-        className={`w-full text-xs font-body tracking-widest py-3 mb-3 transition-all duration-300 ${outOfStock ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-duch-black text-white hover:bg-gray-900 opacity-0 group-hover:opacity-100'}`}
-      >
-        {outOfStock ? 'OUT OF STOCK' : 'ADD TO CART'}
-      </button>
+      {/* Add to cart / Wishlist */}
+      <div className="flex items-center gap-2 mb-3 relative z-10">
+        <button
+          disabled={outOfStock}
+          onClick={() => !outOfStock && addToCart(product, 'M', 1)}
+          className={`flex-1 text-xs font-body tracking-widest py-3 transition-all duration-300 ${outOfStock ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-duch-black text-white hover:bg-gray-900'}`}
+        >
+          {outOfStock ? 'OUT OF STOCK' : 'ADD TO CART'}
+        </button>
+        <button 
+          onClick={() => setIsWishlisted(prev => {
+            if (!prev) {
+              setHeartAnim(true);
+              setTimeout(() => setHeartAnim(false), 400);
+            }
+            return !prev;
+          })}
+          className={`w-[40px] h-[40px] flex shrink-0 items-center justify-center border border-black/10 transition-colors ${isWishlisted ? 'text-red-500' : 'text-duch-black hover:bg-black/5'} ${heartAnim ? 'animate-heart-pop' : ''}`}
+          aria-label="Wishlist"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill={isWishlisted ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </button>
+      </div>
       {/* Info */}
       <Link to={`/product/${product.id}`} className="block hover:opacity-70 transition-opacity">
         <h3 className="font-body text-sm text-duch-black leading-snug mb-2">{product.title}</h3>
