@@ -6,11 +6,11 @@ const PAGES = {
     sections: [
       {
         heading: 'Born in Coimbatore',
-        body: `DUCH was founded in 2020 with one simple belief: premium menswear shouldn't cost a premium price. We started from a small workspace near Prasanna Theatre in Coimbatore — two friends frustrated with the gap between quality fabric and honest pricing in the Indian market.\n\nCoimbatore is the textile capital of India, and we leaned into that advantage. By cutting out middlemen and working directly with mill suppliers, we built a brand that delivers garments worth ₹4000 at prices that start at ₹549.`,
+        body: `Brandster was founded in 2020 with one simple belief: premium menswear shouldn't cost a premium price. We started from a small workspace near Prasanna Theatre in Coimbatore — two friends frustrated with the gap between quality fabric and honest pricing in the Indian market.\n\nCoimbatore is the textile capital of India, and we leaned into that advantage. By cutting out middlemen and working directly with mill suppliers, we built a brand that delivers garments worth ₹4000 at prices that start at ₹549.`,
       },
       {
-        heading: 'What "DUCH" Means',
-        body: `DUCH stands for Dressed Under Crafted Heritage — a tribute to the artisans and weavers of Tamil Nadu whose skill underpins every shirt, blazer, and jacket we produce. The name also nods to our founders' roots: a simple word that feels timeless, strong, and understated. Just like our clothes.`,
+        heading: 'What "Brandster" Means',
+        body: `Brandster stands for Dressed Under Crafted Heritage — a tribute to the artisans and weavers of Tamil Nadu whose skill underpins every shirt, blazer, and jacket we produce. The name also nods to our founders' roots: a simple word that feels timeless, strong, and understated. Just like our clothes.`,
       },
       {
         heading: 'Our Promise',
@@ -18,7 +18,7 @@ const PAGES = {
       },
       {
         heading: 'What\'s Next',
-        body: `We're expanding our range into formal evening wear and premium athleisure in 2025. We're also building a custom tailoring service for shirts and trousers, where you can submit your measurements and get a perfect fit — delivered in 10 days.\n\nThank you for being part of the DUCH journey.`,
+        body: `We're expanding our range into formal evening wear and premium athleisure in 2025. We're also building a custom tailoring service for shirts and trousers, where you can submit your measurements and get a perfect fit — delivered in 10 days.\n\nThank you for being part of the Brandster journey.`,
       },
     ],
   },
@@ -28,7 +28,7 @@ const PAGES = {
     sections: [
       {
         heading: '1. Acceptance of Terms',
-        body: `By accessing and using the DUCH Clothing website (duchclothing.in), you agree to be bound by these Terms & Conditions. If you do not agree to these terms, please do not use our website or services.`,
+        body: `By accessing and using the Brandster Clothing website (brandsterclothing.in), you agree to be bound by these Terms & Conditions. If you do not agree to these terms, please do not use our website or services.`,
       },
       {
         heading: '2. Products & Pricing',
@@ -36,15 +36,15 @@ const PAGES = {
       },
       {
         heading: '3. Orders & Payment',
-        body: `Orders are confirmed only upon successful payment. We accept UPI, Net Banking, Credit/Debit Cards, and Cash on Delivery (COD) for orders above ₹499. DUCH reserves the right to cancel any order in cases of pricing errors, stock unavailability, or suspected fraudulent activity.`,
+        body: `Orders are confirmed only upon successful payment. We accept UPI, Net Banking, Credit/Debit Cards, and Cash on Delivery (COD) for orders above ₹499. Brandster reserves the right to cancel any order in cases of pricing errors, stock unavailability, or suspected fraudulent activity.`,
       },
       {
         heading: '4. Intellectual Property',
-        body: `All content on this website — including logos, product images, text, and design — is the intellectual property of DUCH Clothing. Unauthorized reproduction, distribution, or commercial use is strictly prohibited and may result in legal action.`,
+        body: `All content on this website — including logos, product images, text, and design — is the intellectual property of Brandster Clothing. Unauthorized reproduction, distribution, or commercial use is strictly prohibited and may result in legal action.`,
       },
       {
         heading: '5. Limitation of Liability',
-        body: `DUCH Clothing shall not be liable for any indirect, incidental, or consequential damages arising from the use or inability to use our products or services. Our maximum liability in any case is limited to the invoice value of the product in question.`,
+        body: `Brandster Clothing shall not be liable for any indirect, incidental, or consequential damages arising from the use or inability to use our products or services. Our maximum liability in any case is limited to the invoice value of the product in question.`,
       },
       {
         heading: '6. Governing Law',
@@ -74,11 +74,11 @@ const PAGES = {
       },
       {
         heading: 'Your Rights',
-        body: `You may request access to, correction of, or deletion of your personal data at any time by emailing info@duchclothing.in. We will respond within 7 business days.`,
+        body: `You may request access to, correction of, or deletion of your personal data at any time by emailing info@brandsterclothing.in. We will respond within 7 business days.`,
       },
       {
         heading: 'Contact',
-        body: `For privacy-related queries, contact our Data Officer at info@duchclothing.in or call +91 74181 33373.`,
+        body: `For privacy-related queries, contact our Data Officer at info@brandsterclothing.in or call +91 74181 33373.`,
       },
     ],
   },
@@ -100,7 +100,7 @@ const PAGES = {
       },
       {
         heading: 'Tracking Your Order',
-        body: `Once dispatched, you'll receive a tracking ID from our logistics partner. You can track your order on our website under "Track Your Order" or directly on the courier's website. For any issues, contact us at info@duchclothing.in.`,
+        body: `Once dispatched, you'll receive a tracking ID from our logistics partner. You can track your order on our website under "Track Your Order" or directly on the courier's website. For any issues, contact us at info@brandsterclothing.in.`,
       },
       {
         heading: 'Undeliverable Packages',
@@ -118,7 +118,7 @@ const PAGES = {
       },
       {
         heading: 'How to Initiate a Return',
-        body: `Email info@duchclothing.in with your order number, reason for return, and 2–3 clear photos of the product. Our team will respond within 24 hours with a return approval and pickup instructions. Do not send items without prior approval.`,
+        body: `Email info@brandsterclothing.in with your order number, reason for return, and 2–3 clear photos of the product. Our team will respond within 24 hours with a return approval and pickup instructions. Do not send items without prior approval.`,
       },
       {
         heading: 'Refund Process',
@@ -139,7 +139,7 @@ const PAGES = {
     sections: [
       {
         heading: 'Can I change my order after placing it?',
-        body: `If your order hasn't been dispatched yet, we can modify it. Contact us immediately at info@duchclothing.in or +91 74181 33373. Once dispatched, modifications aren't possible.`,
+        body: `If your order hasn't been dispatched yet, we can modify it. Contact us immediately at info@brandsterclothing.in or +91 74181 33373. Once dispatched, modifications aren't possible.`,
       },
       {
         heading: 'How do I find the right size?',
@@ -158,7 +158,7 @@ const PAGES = {
         body: `We use a range of fabrics including 100% ring-spun cotton, linen blends, poplin, pique knit, and premium wool blends — all sourced from certified mills in Coimbatore and Tirupur. Fabric details are listed on each product page.`,
       },
       {
-        heading: 'How do I care for my DUCH clothes?',
+        heading: 'How do I care for my Brandster clothes?',
         body: `Most of our garments are machine-washable on a gentle cold cycle. We recommend turning shirts inside out before washing and air drying to maintain shape and color. Blazers and wool pieces should be dry cleaned only.`,
       },
       {
@@ -172,15 +172,15 @@ const PAGES = {
     sections: [
       {
         heading: 'Customer Support',
-        body: `We're available Monday to Saturday, 9:00 AM – 7:00 PM IST.\n\nEmail: info@duchclothing.in\nPhone/WhatsApp: +91 74181 33373\n\nWe aim to respond to all queries within 4 business hours.`,
+        body: `We're available Monday to Saturday, 9:00 AM – 7:00 PM IST.\n\nEmail: info@brandsterclothing.in\nPhone/WhatsApp: +91 74181 33373\n\nWe aim to respond to all queries within 4 business hours.`,
       },
       {
         heading: 'Order Issues',
-        body: `For issues with an existing order (delay, wrong item, damage), please email info@duchclothing.in with your Order ID in the subject line. This helps us prioritize and resolve your issue faster.`,
+        body: `For issues with an existing order (delay, wrong item, damage), please email info@brandsterclothing.in with your Order ID in the subject line. This helps us prioritize and resolve your issue faster.`,
       },
       {
         heading: 'Business & Wholesale Enquiries',
-        body: `Interested in stocking DUCH products or bulk ordering for your organization? Reach out to us at info@duchclothing.in with the subject "Wholesale Enquiry" and we'll connect you with our B2B team.`,
+        body: `Interested in stocking Brandster products or bulk ordering for your organization? Reach out to us at info@brandsterclothing.in with the subject "Wholesale Enquiry" and we'll connect you with our B2B team.`,
       },
       {
         heading: 'Visit / Return Address',
@@ -197,7 +197,7 @@ const PAGES = {
       },
       {
         heading: 'Haven\'t received your tracking ID?',
-        body: `Tracking details are sent within 24 hours of dispatch. If you haven't received them:\n1. Check your spam/junk folder\n2. Ensure your email and phone are correct on your order\n3. Contact us at info@duchclothing.in with your Order ID`,
+        body: `Tracking details are sent within 24 hours of dispatch. If you haven't received them:\n1. Check your spam/junk folder\n2. Ensure your email and phone are correct on your order\n3. Contact us at info@brandsterclothing.in with your Order ID`,
       },
       {
         heading: 'Order Status Definitions',

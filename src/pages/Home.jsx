@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const FEATURED_IDS = [1, 2, 6, 4];
@@ -9,7 +10,7 @@ const CATEGORY_TILES = [
   { label: 'JACKETS',     cat: 'Jackets',     image: 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?q=80&w=1000' },
   { label: 'T-SHIRTS',    cat: 'T-Shirts',    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000' },
 ];
-const MARQUEE_ITEMS = ['DUCH NEVER GOES OUT OF STYLE', 'A CLASSIC NEVER GOES OUT OF STYLE', 'PREMIUM MENSWEAR', 'NEW ARRIVALS NOW LIVE'];
+const MARQUEE_ITEMS = ['Brandster NEVER GOES OUT OF STYLE', 'A CLASSIC NEVER GOES OUT OF STYLE', 'PREMIUM MENSWEAR', 'NEW ARRIVALS NOW LIVE'];
 
 const REVIEWS = [
   { name: 'Rizo', rating: 5, date: '6 months ago', text: "Absolutely loved the collection! I recently purchased a few shirts, a hoodie, and some pants — all of them are really good in quality and fit perfectly. The designs are stylish, comfortable, and worth the price. They have a lot of variety to choose from, and every piece feels premium. Definitely one of the best shopping experiences I've had. Highly recommend checking out their collection!" },
@@ -40,7 +41,7 @@ export default function Home({ products, banners = [], addToCart }) {
         <div className="absolute inset-0 lg:hidden w-full h-full overflow-hidden z-0">
           <img
             src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?q=80&w=2000"
-            alt="DUCH Hero"
+            alt="Brandster Hero"
             className="w-full h-full object-cover object-top"
             loading="eager"
             fetchpriority="high"
@@ -50,10 +51,10 @@ export default function Home({ products, banners = [], addToCart }) {
 
         {/* ── Desktop Right Image Panel ── */}
         <div className="hidden lg:flex absolute right-0 top-0 bottom-0 w-[52%] overflow-hidden z-0 items-center justify-center p-12 pr-16 pl-0">
-          <div className="w-full h-[90%] bg-white p-4 shadow-2xl stamp-cutout rotate-2 hover:rotate-0 transition-transform duration-700">
+          <div className="w-full h-[90%] bg-white p-4 shadow-2xl transition-transform duration-700">
             <img
               src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?q=80&w=2000"
-              alt="DUCH Hero"
+              alt="Brandster Hero"
               className="w-full h-full object-cover object-top"
               loading="eager"
               fetchpriority="high"
@@ -63,16 +64,16 @@ export default function Home({ products, banners = [], addToCart }) {
           {/* Removed old top badge to replace with bottom floating off card */}
           <div className="absolute bottom-12 right-12 z-20 text-right">
             <p className="font-body text-[10px] tracking-[0.3em] text-white/50 mb-1">EST. 2020</p>
-            <p className="font-display text-white text-sm tracking-widest">DUCH CLOTHING</p>
+            <p className="font-display text-white text-sm tracking-widest">Brandster Clothing</p>
           </div>
         </div>
 
-        {/* ── Ghost background "DUCH" (Desktop only) ── */}
+        {/* ── Ghost background "Brandster" (Desktop only) ── */}
         <span
           className="hidden lg:block absolute bottom-0 left-0 font-display font-bold text-black/[0.03] select-none pointer-events-none leading-[0.85] whitespace-nowrap z-0"
           style={{ fontSize: 'clamp(100px,18vw,260px)' }}
           aria-hidden="true"
-        >DUCH</span>
+        >Brandster</span>
 
         {/* ── Text Content ── */}
         <div className="relative z-10 w-full h-full max-w-[1440px] mx-auto px-6 md:px-12 py-8 lg:py-0 flex flex-col justify-end lg:justify-center">

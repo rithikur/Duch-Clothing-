@@ -32,18 +32,18 @@ export default function Loader({ onDone, ready = true }) {
         transition: isExit ? 'transform 0.75s cubic-bezier(0.76, 0, 0.24, 1)' : 'none',
       }}
     >
-      {/* ── DUCH Letters – staggered slide up ── */}
+      {/* ── Brandster Letters – staggered slide up ── */}
       <div className="flex items-end gap-1 overflow-hidden">
-        {['D', 'U', 'C', 'H'].map((letter, i) => (
+        {['B', 'R', 'A', 'N', 'D', 'S', 'T', 'E', 'R'].map((letter, i) => (
           <span
-            key={letter}
+            key={`${letter}-${i}`}
             className="font-display font-bold text-white leading-none"
             style={{
-              fontSize: 'clamp(5rem, 14vw, 11rem)',
+              fontSize: 'clamp(3rem, 10vw, 8rem)',
               display: 'inline-block',
               transform: phase === 'enter' ? 'translateY(120%)' : 'translateY(0)',
               opacity:   phase === 'enter' ? 0 : 1,
-              transition: `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 0.06 + 0.08}s, opacity 0.5s ease ${i * 0.06 + 0.08}s`,
+              transition: `transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 0.05 + 0.08}s, opacity 0.5s ease ${i * 0.05 + 0.08}s`,
             }}
           >
             {letter}
