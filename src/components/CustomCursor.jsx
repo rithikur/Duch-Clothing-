@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: -100, y: -100 });
@@ -9,6 +9,7 @@ export default function CustomCursor() {
     // Only show custom cursor on desktop
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsVisible(true);
 
     const onMouseMove = (e) => {

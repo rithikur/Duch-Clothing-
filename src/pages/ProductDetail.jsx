@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 const SIZES = ['S', 'M', 'L', 'XL', 'XXL'];
@@ -29,6 +29,7 @@ export default function ProductDetail({ products, addToCart }) {
   /* Reset state when product changes */
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSize('M');
     setQty(1);
     setAdded(false);

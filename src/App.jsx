@@ -12,10 +12,10 @@ import PageTransition from './components/PageTransition';
 import InfoPage from './pages/InfoPage';
 import Profile from './pages/Profile';
 import Wishlist from './pages/Wishlist';
-import CustomCursor from './components/CustomCursor';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const ALL_PRODUCTS = [
-  { id: 1,  title: 'Breezy Linen Half Sleeve Shirt', category: 'Casual',      price: 1374, originalPrice: 2499, discount: 45, inventory: 18, image: 'https://images.unsplash.com/photo-1603252109303-2751441dd15e?q=80&w=1000', description: 'Crafted from premium breathable linen, this half-sleeve shirt is perfect for the modern casual wardrobe. Light-weight and easy to style.' },
+  { id: 1,  title: 'Breezy Linen Half Sleeve Shirt', category: 'Casual',      price: 1374, originalPrice: 2499, discount: 45, inventory: 18, image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1000', description: 'Crafted from premium breathable linen, this half-sleeve shirt is perfect for the modern casual wardrobe. Light-weight and easy to style.' },
   { id: 2,  title: 'Classic Formal Blazer Set',       category: 'Formal',      price: 2820, originalPrice: 5499, discount: 48, inventory: 5,  image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1000', description: 'A tailored blazer that commands attention. Structured shoulders, clean lapels, and a slim-fit silhouette made for every boardroom.' },
   { id: 3,  title: 'Heritage Poplin Casual Shirt',    category: 'Casual',      price: 1594, originalPrice: 2899, discount: 45, inventory: 22, image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=1000', description: 'Timeless poplin weave with a relaxed fit. This versatile shirt goes from weekend brunches to laid-back office days with ease.' },
   { id: 4,  title: 'Signature Striped Polo',          category: 'Polo',        price: 824,  originalPrice: 1499, discount: 45, inventory: 30, image: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=1000', description: 'Clean, refined, and effortlessly cool. Our signature polo features moisture-wicking fabric and a classic tipped collar.' },
@@ -51,17 +51,17 @@ function App() {
   });
 
   const [products, setProducts] = useState(() => {
-    const saved = localStorage.getItem('duch-products-v6');
+    const saved = localStorage.getItem('duch-products-v7');
     return saved ? JSON.parse(saved) : ALL_PRODUCTS;
   });
 
   const [promotionalBanners, setPromotionalBanners] = useState(() => {
-    const saved = localStorage.getItem('duch-banners-v1');
+    const saved = localStorage.getItem('duch-banners-v2');
     return saved ? JSON.parse(saved) : [
       { id: 1, image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000', title: 'SEASON SALE' },
       { id: 2, image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1000', title: 'NEW ARRIVALS' },
       { id: 3, image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1000', title: 'EXCLUSIVE OFFERS' },
-      { id: 4, image: 'https://images.unsplash.com/photo-1534452203294-49c8913721b2?q=80&w=1000', title: 'LIMITED EDITION' },
+      { id: 4, image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1000', title: 'LIMITED EDITION' },
       { id: 5, image: 'https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?q=80&w=1000', title: 'STYLE ESSENTIALS' },
       { id: 6, image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000', title: 'CURATED LOOKS' }
     ];
@@ -137,9 +137,9 @@ function App() {
   };
 
   /* ── Admin actions ── */
-  const updateInventory = (id, qty) => setProducts(prev => { const u = prev.map(p => p.id === id ? { ...p, inventory: qty } : p); localStorage.setItem('duch-products-v6', JSON.stringify(u)); return u; });
-  const updatePrice     = (id, price) => setProducts(prev => { const u = prev.map(p => p.id === id ? { ...p, price } : p); localStorage.setItem('duch-products-v6', JSON.stringify(u)); return u; });
-  const updateBanner    = (id, image) => setPromotionalBanners(prev => { const u = prev.map(b => b.id === id ? { ...b, image } : b); localStorage.setItem('duch-banners-v1', JSON.stringify(u)); return u; });
+  const updateInventory = (id, qty) => setProducts(prev => { const u = prev.map(p => p.id === id ? { ...p, inventory: qty } : p); localStorage.setItem('duch-products-v7', JSON.stringify(u)); return u; });
+  const updatePrice     = (id, price) => setProducts(prev => { const u = prev.map(p => p.id === id ? { ...p, price } : p); localStorage.setItem('duch-products-v7', JSON.stringify(u)); return u; });
+  const updateBanner    = (id, image) => setPromotionalBanners(prev => { const u = prev.map(b => b.id === id ? { ...b, image } : b); localStorage.setItem('duch-banners-v2', JSON.stringify(u)); return u; });
 
   const cartCount = cart.reduce((s, i) => s + i.qty, 0);
 

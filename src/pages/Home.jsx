@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const FEATURED_IDS = [1, 2, 6, 4];
@@ -38,17 +37,15 @@ export default function Home({ products, banners = [], addToCart }) {
       ══════════════════════════════════ */}
       <section className="relative overflow-hidden bg-duch-bg h-[calc(100svh-106px)] lg:h-auto lg:min-h-[calc(100svh-150px)] flex flex-col lg:flex-row lg:items-center">
         {/* ── Mobile Background Image (Cinematic Full Bleed) ── */}
-        <div className="absolute inset-0 lg:hidden w-full h-full overflow-hidden z-0 p-6 pt-24 pb-32">
-          <div className="w-full h-full bg-white p-2 sm:p-3 shadow-xl stamp-cutout rotate-[-1deg]">
-            <img
-              src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?q=80&w=2000"
-              alt="DUCH Hero"
-              className="w-full h-full object-cover object-top"
-              loading="eager"
-              fetchpriority="high"
-            />
-            <div className="absolute inset-0 bg-black/30" />
-          </div>
+        <div className="absolute inset-0 lg:hidden w-full h-full overflow-hidden z-0">
+          <img
+            src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?q=80&w=2000"
+            alt="DUCH Hero"
+            className="w-full h-full object-cover object-top"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
 
         {/* ── Desktop Right Image Panel ── */}
@@ -153,9 +150,9 @@ export default function Home({ products, banners = [], addToCart }) {
            {/* Trust side */}
            <div className="flex items-center gap-5 w-full sm:w-auto justify-center sm:justify-start pt-3 sm:pt-0">
              <div className="flex -space-x-3">
-               <img src="https://i.pravatar.cc/100?img=12" className="w-12 h-12 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
-               <img src="https://i.pravatar.cc/100?img=33" className="w-12 h-12 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
-               <img src="https://i.pravatar.cc/100?img=47" className="w-12 h-12 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
+               <img src="https://randomuser.me/api/portraits/men/32.jpg" className="w-12 h-12 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
+               <img src="https://randomuser.me/api/portraits/women/44.jpg" className="w-12 h-12 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
+               <img src="https://randomuser.me/api/portraits/men/47.jpg" className="w-12 h-12 rounded-full border-[3px] border-white object-cover shadow-sm" alt="Customer" />
                <div className="w-12 h-12 rounded-full border-[3px] border-white bg-duch-black text-white flex items-center justify-center text-[13px] font-bold shadow-sm z-10">+</div>
              </div>
              <div className="text-left">
@@ -198,7 +195,7 @@ export default function Home({ products, banners = [], addToCart }) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="relative group overflow-hidden bg-gray-100 aspect-[4/5]">
-            <img src="https://images.unsplash.com/photo-1550614000-4b95d466f230?q=80&w=1000" alt="Summer Sale" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1000" alt="Summer Sale" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
             <div className="absolute inset-0 p-8 flex flex-col justify-end">
               <span className="bg-white text-duch-black font-body text-[10px] tracking-widest px-3 py-1 mb-3 w-fit">FLAT 50% OFF</span>
