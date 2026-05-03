@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import BRAND from '../brand';
 
 export default function Profile({ user, updateUser }) {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ export default function Profile({ user, updateUser }) {
                 // --- JOIN PREMIUM UI ---
                 <div>
                   <p className="font-body text-sm text-black/60 mb-8 max-w-xl leading-relaxed">
-                    Join the exclusive Brandster Premium Club. Upgrade your membership today to unlock special privileges, extra offers, and luxury perks designed just for you.
+                    Join the exclusive {BRAND.name} Premium Club. Upgrade your membership today to unlock special privileges, extra offers, and luxury perks designed just for you.
                   </p>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
@@ -96,7 +97,7 @@ export default function Profile({ user, updateUser }) {
                 // --- PREMIUM CARD VIEW ---
                 <>
                   <p className="font-body text-sm text-black/60 mb-10 max-w-xl leading-relaxed">
-                    You are an exclusive Brandster Premium Club member. Enjoy your extra offers, early access to sales, and free express shipping worldwide. Present this digital member card at our flagship stores for exclusive VIP treatment.
+                    You are an exclusive {BRAND.name} Premium Club member. Enjoy your extra offers, early access to sales, and free express shipping worldwide. Present this digital member card at our flagship stores for exclusive VIP treatment.
                   </p>
                   
                   {/* Premium Card */}
@@ -109,7 +110,7 @@ export default function Profile({ user, updateUser }) {
                     
                     <div className="relative h-full p-6 md:p-8 flex flex-col justify-between text-white z-10">
                       <div className="flex justify-between items-start">
-                        <span className="font-display text-2xl font-bold tracking-tighter">Brandster</span>
+                        <span className="font-display text-2xl font-bold tracking-tighter">{BRAND.name}</span>
                         <span className="font-body text-[9px] tracking-[0.3em] text-white/70 border border-white/20 px-2.5 py-1 rounded-full bg-white/5 backdrop-blur-sm">PREMIUM</span>
                       </div>
                       

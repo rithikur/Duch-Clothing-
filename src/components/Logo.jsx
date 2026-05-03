@@ -1,7 +1,8 @@
+import BRAND from '../brand';
 
 /**
  * Logo — Pure HTML/CSS logo. Avoids SVG <text> font-loading issues
- * that caused the 'Brandster' wordmark to be invisible or clipped.
+ * that caused the brand wordmark to be invisible or clipped.
  */
 export default function Logo({ className = "" }) {
   return (
@@ -11,7 +12,7 @@ export default function Logo({ className = "" }) {
         className="font-bold tracking-[0.1em] leading-none italic"
         style={{ fontFamily: "'Playfair Display', serif", fontSize: 'inherit' }}
       >
-        Brandster
+        {BRAND.name}
       </span>
     </div>
   );

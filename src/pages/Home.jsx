@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BRAND from '../brand';
 
 const FEATURED_IDS = [1, 2, 6, 4];
 const CATEGORY_TILES = [
@@ -10,7 +11,7 @@ const CATEGORY_TILES = [
   { label: 'JACKETS',     cat: 'Jackets',     image: 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?q=80&w=1000' },
   { label: 'T-SHIRTS',    cat: 'T-Shirts',    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000' },
 ];
-const MARQUEE_ITEMS = ['Brandster NEVER GOES OUT OF STYLE', 'A CLASSIC NEVER GOES OUT OF STYLE', 'PREMIUM MENSWEAR', 'NEW ARRIVALS NOW LIVE'];
+const MARQUEE_ITEMS = [`${BRAND.name.toUpperCase()} NEVER GOES OUT OF STYLE`, 'A CLASSIC NEVER GOES OUT OF STYLE', 'PREMIUM MENSWEAR', 'NEW ARRIVALS NOW LIVE'];
 
 const REVIEWS = [
   { name: 'Rizo', rating: 5, date: '6 months ago', text: "Absolutely loved the collection! I recently purchased a few shirts, a hoodie, and some pants — all of them are really good in quality and fit perfectly. The designs are stylish, comfortable, and worth the price. They have a lot of variety to choose from, and every piece feels premium. Definitely one of the best shopping experiences I've had. Highly recommend checking out their collection!" },
@@ -41,7 +42,7 @@ export default function Home({ products, banners = [], addToCart }) {
         <div className="absolute inset-0 lg:hidden w-full h-full overflow-hidden z-0">
           <img
             src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?q=80&w=2000"
-            alt="Brandster Hero"
+            alt={`${BRAND.name} Hero`}
             className="w-full h-full object-cover object-top"
             loading="eager"
             fetchpriority="high"
@@ -54,7 +55,7 @@ export default function Home({ products, banners = [], addToCart }) {
           <div className="w-full h-[90%] bg-white p-4 shadow-2xl transition-transform duration-700">
             <img
               src="https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?q=80&w=2000"
-              alt="Brandster Hero"
+              alt={`${BRAND.name} Hero`}
               className="w-full h-full object-cover object-top"
               loading="eager"
               fetchpriority="high"
@@ -64,7 +65,7 @@ export default function Home({ products, banners = [], addToCart }) {
           {/* Removed old top badge to replace with bottom floating off card */}
           <div className="absolute bottom-12 right-12 z-20 text-right">
             <p className="font-body text-[10px] tracking-[0.3em] text-white/50 mb-1">EST. 2020</p>
-            <p className="font-display text-white text-sm tracking-widest">Brandster Clothing</p>
+            <p className="font-display text-white text-sm tracking-widest">{BRAND.fullName}</p>
           </div>
         </div>
 
@@ -73,7 +74,7 @@ export default function Home({ products, banners = [], addToCart }) {
           className="hidden lg:block absolute bottom-0 left-0 font-display font-bold text-black/[0.03] select-none pointer-events-none leading-[0.85] whitespace-nowrap z-0"
           style={{ fontSize: 'clamp(100px,18vw,260px)' }}
           aria-hidden="true"
-        >Brandster</span>
+        >{BRAND.name}</span>
 
         {/* ── Text Content ── */}
         <div className="relative z-10 w-full h-full max-w-[1440px] mx-auto px-6 md:px-12 py-8 lg:py-0 flex flex-col justify-end lg:justify-center">
@@ -145,7 +146,7 @@ export default function Home({ products, banners = [], addToCart }) {
            <div className="flex flex-col items-center sm:items-start text-center sm:text-left border-b sm:border-b-0 sm:border-r border-black/20 pb-6 sm:pb-0 sm:pr-10 w-full sm:w-auto">
              <p className="font-body text-[12px] tracking-[0.3em] mb-2 text-black/60 font-bold">LIMITED TIME</p>
              <p className="font-display text-5xl md:text-6xl font-bold leading-none text-duch-black whitespace-nowrap">48% OFF</p>
-             <p className="font-body text-[12px] tracking-widest text-black/60 mt-3 font-bold">USE CODE: DUCH48</p>
+             <p className="font-body text-[12px] tracking-widest text-black/60 mt-3 font-bold">USE CODE: {BRAND.promoCode}</p>
            </div>
            
            {/* Trust side */}
