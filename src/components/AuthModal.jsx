@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import BRAND from '../brand';
+import { useBrand } from '../BrandContext';
 
 export default function AuthModal({ open, onClose, onLogin }) {
+  const { brand } = useBrand();
   const [isLogin, setIsLogin] = useState(true);
   const [step, setStep] = useState('details'); // 'details' | 'otp'
   const [name, setName] = useState('');
@@ -94,7 +95,7 @@ export default function AuthModal({ open, onClose, onLogin }) {
           <p className="font-body text-[10px] text-black/50 tracking-[0.1em] uppercase">
             {step === 'otp' 
               ? (isLogin ? 'Sent to your linked phone number' : `Sent to +91 ${phone}`) 
-              : isLogin ? 'Sign in to access your account' : `Join ${BRAND.name} for exclusive perks`}
+              : isLogin ? 'Sign in to access your account' : `Join ${brand.name} for exclusive perks`}
           </p>
         </div>
 

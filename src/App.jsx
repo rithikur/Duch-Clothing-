@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -12,6 +12,7 @@ import PageTransition from './components/PageTransition';
 import InfoPage from './pages/InfoPage';
 import Profile from './pages/Profile';
 import Wishlist from './pages/Wishlist';
+import { BrandProvider } from './BrandContext';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const ALL_PRODUCTS = [
@@ -47,7 +48,14 @@ function App() {
   const [cart, setCart]           = useState([]);
   const [user, setUser]           = useState(() => {
     const saved = localStorage.getItem('duch-user');
-    return saved ? JSON.parse(saved) : null;
+    if (!saved) return null;
+    const parsed = JSON.parse(saved);
+    // Never auto-restore admin sessions — always require fresh login
+    if (parsed?.role === 'admin' || parsed === 'admin') {
+      localStorage.removeItem('duch-user');
+      return null;
+    }
+    return parsed;
   });
 
   const [products, setProducts] = useState(() => {
@@ -122,7 +130,10 @@ function App() {
   /* ── Auth actions ── */
   const handleLogin = (userData) => {
     setUser(userData);
-    localStorage.setItem('duch-user', JSON.stringify(userData));
+    // Never persist admin sessions to localStorage — security gate must always show on refresh
+    if (userData?.role !== 'admin') {
+      localStorage.setItem('duch-user', JSON.stringify(userData));
+    }
   };
   const handleLogout = () => {
     setUser(null);
@@ -144,7 +155,7 @@ function App() {
   const cartCount = cart.reduce((s, i) => s + i.qty, 0);
 
   return (
-    <>
+    <BrandProvider>
       <div className="noise-overlay" />
       {loading && <Loader onDone={() => setLoading(false)} ready={imagesReady} />}
       <Router>
@@ -169,7 +180,7 @@ function App() {
           <Footer />
         </div>
       </Router>
-    </>
+    </BrandProvider>
   );
 }
 

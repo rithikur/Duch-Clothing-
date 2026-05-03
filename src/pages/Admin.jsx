@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
+import { useBrand } from '../BrandContext';
 
 
 const Admin = ({ products, banners = [], updateInventory, updatePrice, updateBanner, user, onLogin }) => {
+  const { brand, updateBrandConfig, resetBrandConfig } = useBrand();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [brandSaved, setBrandSaved] = useState(false);
+
+  // Local brand editing state
+  const [localBrand, setLocalBrand] = useState(() => ({ ...brand }));
 
   if (!user || user.role !== 'admin') {
     const handleLogin = (e) => {
       e.preventDefault();
-      if ((email === 'admin' || email === 'admin@duch.com') && password === 'admin123') {
-        onLogin('admin');
+      if ((email === 'admin' || email === 'admin@duch.com' || email === 'admin@brandsterclothing.in') && password === 'admin123') {
+        onLogin({ email, role: 'admin' });
       } else {
         setError('Invalid administrator credentials.');
       }
@@ -133,6 +139,56 @@ const Admin = ({ products, banners = [], updateInventory, updatePrice, updateBan
             index={i}
           />
         ))}
+      </div>
+
+      {/* ── Brand Settings ── */}
+      <div className="mt-16 mb-8 flex items-center justify-between border-b border-black/10 pb-4">
+        <h2 className="font-display text-xl tracking-tight">BRAND_CONFIG</h2>
+        <span className="font-body text-[10px] tracking-widest opacity-40">LIVE IDENTITY</span>
+      </div>
+
+      <div className="grid grid-cols-1 gap-px bg-black/10 border border-black/10 overflow-hidden rounded-sm mb-4">
+        {[
+          { key: 'name',          label: 'Brand Short Name',  hint: 'Used in logo, loader, watermark' },
+          { key: 'fullName',      label: 'Brand Full Name',   hint: 'Used in footer, copyright, titles' },
+          { key: 'email',         label: 'Contact Email',     hint: 'Displayed in footer' },
+          { key: 'phone',         label: 'Contact Phone',     hint: 'Displayed in footer' },
+          { key: 'promoCode',     label: 'Promo Code',        hint: 'Shown on homepage offer card' },
+          { key: 'instagram',     label: 'Instagram URL',     hint: 'Footer social link' },
+          { key: 'domain',        label: 'Website Domain',    hint: 'Used in legal pages' },
+        ].map(({ key, label, hint }) => (
+          <div key={key} className="bg-white p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-zinc-50 transition-colors">
+            <div className="md:w-1/3">
+              <p className="font-display font-bold text-sm tracking-tight">{label.toUpperCase()}</p>
+              <p className="font-body text-[9px] tracking-[0.2em] text-black/30 uppercase mt-0.5">{hint}</p>
+            </div>
+            <input
+              type="text"
+              value={localBrand[key] || ''}
+              onChange={e => setLocalBrand(prev => ({ ...prev, [key]: e.target.value }))}
+              className="flex-1 max-w-xl px-4 py-2.5 bg-zinc-50 border-b-2 border-black/5 font-body text-sm focus:outline-none focus:border-duch-black focus:bg-white transition-all text-right"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-4">
+        <button
+          onClick={() => {
+            updateBrandConfig(localBrand);
+            setBrandSaved(true);
+            setTimeout(() => setBrandSaved(false), 2500);
+          }}
+          className="bg-duch-black text-white font-body text-xs tracking-[0.2em] px-8 py-3.5 hover:bg-gray-800 transition-colors btn-shimmer"
+        >
+          {brandSaved ? '✓ SAVED' : 'SAVE BRAND CONFIG'}
+        </button>
+        <button
+          onClick={() => { resetBrandConfig(); setLocalBrand({ ...brand }); }}
+          className="border border-black/20 text-black/50 font-body text-xs tracking-[0.2em] px-6 py-3.5 hover:border-black hover:text-black transition-colors"
+        >
+          RESET TO DEFAULTS
+        </button>
       </div>
 
       <div className="mt-12 flex items-center gap-4 p-6 bg-zinc-50 border border-black/5">

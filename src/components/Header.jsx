@@ -116,7 +116,8 @@ export default function Header({ cartCount = 0, onCartOpen, user, onLogin, onLog
       </div>
 
       {/* Category nav row */}
-      <div className="border-t border-black/8 hidden md:block" style={{ height: '44px' }}>
+      {location.pathname !== '/admin' && (
+        <div className="border-t border-black/8 hidden md:block" style={{ height: '44px' }}>
         <nav className="max-w-[1440px] mx-auto px-12 flex items-center justify-center gap-10 h-full">
           {NAV_LINKS.map(link => {
             const active = location.pathname === '/shop' && location.search.includes(link.href.split('?')[1] || '!');
@@ -132,6 +133,7 @@ export default function Header({ cartCount = 0, onCartOpen, user, onLogin, onLog
           })}
         </nav>
       </div>
+      )}
 
       {/* Mobile menu */}
       <div 

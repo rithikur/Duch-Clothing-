@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import BRAND from '../brand';
+import { useBrand } from '../BrandContext';
 
 export default function Loader({ onDone, ready = true }) {
+  const { brand } = useBrand();
   /* Stable ref — avoids the effect re-running when parent re-renders */
   const onDoneRef = useRef(onDone);
   useEffect(() => { onDoneRef.current = onDone; }, [onDone]);
@@ -35,12 +36,12 @@ export default function Loader({ onDone, ready = true }) {
     >
       {/* ── Brand Letters – staggered slide up ── */}
       <div className="flex items-end gap-1 overflow-hidden">
-        {BRAND.name.toUpperCase().split('').map((letter, i) => (
+        {brand.name.toUpperCase().split('').map((letter, i) => (
           <span
             key={`${letter}-${i}`}
             className="font-display font-bold text-white leading-none"
             style={{
-              fontSize: `clamp(${Math.max(1.5, 10 / BRAND.name.length)}rem, ${Math.max(4, 90 / BRAND.name.length)}vw, ${Math.max(4, 72 / BRAND.name.length)}rem)`,
+              fontSize: `clamp(${Math.max(1.5, 10 / brand.name.length)}rem, ${Math.max(4, 90 / brand.name.length)}vw, ${Math.max(4, 72 / brand.name.length)}rem)`,
               display: 'inline-block',
               transform: phase === 'enter' ? 'translateY(120%)' : 'translateY(0)',
               opacity:   phase === 'enter' ? 0 : 1,
@@ -61,7 +62,7 @@ export default function Loader({ onDone, ready = true }) {
           transition: 'transform 0.7s ease 0.38s, opacity 0.7s ease 0.38s',
         }}
       >
-        {BRAND.fullName.replace(BRAND.name, '').trim() || 'Clothing'}
+        {brand.fullName.replace(brand.name, '').trim() || 'Clothing'}
       </div>
 
       {/* ── Animated line ── */}
